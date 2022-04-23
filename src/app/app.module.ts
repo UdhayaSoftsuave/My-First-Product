@@ -8,7 +8,9 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './products/products.services';
+import { SelectProductComponent } from './products/select-product/select-product.component';
 import { AppRouter } from './Router/app.component.router';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { AppRouter } from './Router/app.component.router';
     HeaderComponent,
     ProductsComponent,
     ProductListComponent,
-    AddProductComponent
+    AddProductComponent,
+    SelectProductComponent
   ],
   imports: [
     BrowserModule,
