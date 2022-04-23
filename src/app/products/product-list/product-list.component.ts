@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/common/productModel';
 import { ProductService } from '../products.services';
 
@@ -9,13 +10,18 @@ import { ProductService } from '../products.services';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private productService : ProductService) { }
-  // product = new ProductModel(1 , 'watch1' ,100 , 'good' ,'watch')
+  constructor(private productService : ProductService , 
+    private router : Router , 
+    private activeroutes : ActivatedRoute) { }
 
   products !: ProductModel[];
  
   ngOnInit(): void {
-    this.products = this.productService.getAllProducts();
+    this.products = this.productService.getAllProducts()
+  }
+  
+  onclick(){
+    this.router.navigate(['add'] , {relativeTo: this.activeroutes , queryParamsHandling : 'preserve'});
   }
 
 }

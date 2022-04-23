@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelectProducts(){
-    this.routes.navigate(['products'] , {relativeTo : this.activeRoutes});
+    this.routes.navigate(['/products']);
   }
 
 }
