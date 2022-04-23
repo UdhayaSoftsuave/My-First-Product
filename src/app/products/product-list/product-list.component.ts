@@ -10,6 +10,8 @@ import { ProductService } from '../products.services';
 })
 export class ProductListComponent implements OnInit {
 
+  
+
   constructor(private productService : ProductService , 
     private router : Router , 
     private activeroutes : ActivatedRoute) { }
@@ -17,7 +19,7 @@ export class ProductListComponent implements OnInit {
   products !: ProductModel[];
  
   ngOnInit(): void {
-    this.products = this.productService.getAllProducts()
+    this.products = this.productService.getAllProducts();
   }
   
   onclick(){

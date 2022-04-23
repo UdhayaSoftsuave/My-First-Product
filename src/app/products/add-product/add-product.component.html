@@ -2,24 +2,24 @@
     <form>
         <div class="form-group">
             <label for="productname">Product Name</label>
-            <input type="text" class="form-control" id="productname" placeholder="Enter productname">
+            <input type="text" class="form-control" id="productname" placeholder="Enter productname" #productName>
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="price">
+            <input type="number" class="form-control" id="price" placeholder="price" #price>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Description">
+            <input type="text" class="form-control" id="description" placeholder="Description" #description>
         </div>
         <div class="dropdown">
             <label for="cars">Choose a category </label>
-            <select id="cars" class="form-control">
+            <select id="cars" class="form-control" #category>
                 <option value="watch">watch</option>
                 <option value="Mobiles">Mobiles</option>
                 <option value="shoes">shoes</option>
             </select>
         </div>
             <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" (click) = 'onSubmit()'>Submit</button>
     </form>    
