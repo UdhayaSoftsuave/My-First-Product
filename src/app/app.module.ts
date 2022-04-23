@@ -2,17 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ProductModel } from './common/productModel';
 import { HeaderComponent } from './header/header.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductService } from './products/products.services';
+import { AppRouter } from './Router/app.component.router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductsComponent,
+    ProductListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRouter
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
