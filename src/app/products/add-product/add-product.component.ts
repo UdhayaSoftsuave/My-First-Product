@@ -22,10 +22,13 @@ export class AddProductComponent implements OnInit {
   category!: ElementRef;
 
   product ! : ProductModel;
+  
+  products ! : ProductModel[];
 
   constructor(private productService :ProductService) { }
 
   ngOnInit(): void {
+    this.productService.getAllProducts();
   }
 
   onSubmit(){
@@ -37,7 +40,8 @@ export class AddProductComponent implements OnInit {
       this.category.nativeElement.value,
       'https://www.helioswatchstore.com/sites/all/themes/helios/assets/images/inside-banner_3.jpg'),
     this.productService.addProduct(this.product);
-    console.log(this.product);
+    this.products.push(this.product);
+    this.productService.changedvalueEmit.emit(this.products);
   }
 
 }

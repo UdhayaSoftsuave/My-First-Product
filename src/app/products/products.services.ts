@@ -1,4 +1,4 @@
-import { OnInit } from "@angular/core";
+import { EventEmitter, OnInit } from "@angular/core";
 import { of } from "rxjs";
 import { ProductModel } from "../common/productModel";
 
@@ -6,6 +6,7 @@ import { ProductModel } from "../common/productModel";
 export class ProductService {
 
     changedvalue !: ProductModel[];
+    changedvalueEmit = new EventEmitter<ProductModel[]>();
 
     products : ProductModel[] = [
         new ProductModel(1 , 'watch1' ,100 , 'good' ,'watch','https://www.helioswatchstore.com/sites/all/themes/helios/assets/images/inside-banner_3.jpg'),
@@ -16,7 +17,12 @@ export class ProductService {
     }
 
     getAllProducts(){
-        return this.products.slice();
+        this.changedvalueEmit.subscribe(
+            (value : ProductModel[]) => {
+                return this.changedvalue = value;
+            }
+        )
+        return this.changedvalue;
     }
 
     addProduct(productModel : ProductModel){
