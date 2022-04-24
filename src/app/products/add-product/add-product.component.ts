@@ -21,6 +21,9 @@ export class AddProductComponent implements OnInit {
   @ViewChild('category', { static: true })
   category!: ElementRef;
 
+  @ViewChild('image', { static: true })
+  image!: ElementRef;
+
   product ! : ProductModel;
   
   products ! : ProductModel[];
@@ -38,10 +41,13 @@ export class AddProductComponent implements OnInit {
       +this.price.nativeElement.value , 
       this.description.nativeElement.value ,
       this.category.nativeElement.value,
-      'https://www.helioswatchstore.com/sites/all/themes/helios/assets/images/inside-banner_3.jpg'),
+      this.image.nativeElement.value),
     this.productService.addProduct(this.product);
+    console.log(this.product);
     this.products.push(this.product);
     this.productService.changedvalueEmit.emit(this.products);
+    
+    
   }
 
 }
