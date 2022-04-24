@@ -10,6 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductService } from './products/products.services';
 import { SelectProductComponent } from './products/select-product/select-product.component';
 import { AppRouter } from './Router/app.component.router';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppRouter } from './Router/app.component.router';
     ProductsComponent,
     ProductListComponent,
     AddProductComponent,
-    SelectProductComponent
+    SelectProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

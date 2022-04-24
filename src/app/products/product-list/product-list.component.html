@@ -3,12 +3,12 @@
 <div class="col-md-5">
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-success" [routerLink] = "['/products/add']">Add Product</button>
+            <button class="btn btn-success" (click) = 'onclick()'>Add Product</button>
         </div>
         <hr>
         <div class="row" *ngFor = "let product of products">
             <div class="col-md-12">
-                <a  class="list-group-item clearfix" >
+                <a  class="list-group-item clearfix" [routerLink] = "['/products/product-details']">
                     <div class="pull-left">
                         <h4 class="list-group-item-heading">{{product.productName}}</h4>
                         <p class="list-group-item-text">{{product.descrption}}</p>
