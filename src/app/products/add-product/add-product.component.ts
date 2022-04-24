@@ -33,7 +33,7 @@ export class AddProductComponent implements OnInit {
 
   onSubmit(){
     this.product= new ProductModel(
-      this.productService.getindex(), 
+      this.productService.getindex() + 1, 
       this.productName.nativeElement.value,
       +this.price.nativeElement.value , 
       this.description.nativeElement.value ,

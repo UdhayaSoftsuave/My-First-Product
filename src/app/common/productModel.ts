@@ -1,6 +1,6 @@
 
 export class ProductModel{
-    constructor(private id :number ,
+    constructor(public id :number ,
          public productName : string ,
          public price : number ,
          public descrption : string , 

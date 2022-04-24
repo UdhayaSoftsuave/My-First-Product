@@ -34,4 +34,8 @@ export class ProductService {
         return this.changedvalue.length;
     }
 
+    getProductById(id:number){
+        return this.changedvalue[+id - 1];
+    }
+
 }

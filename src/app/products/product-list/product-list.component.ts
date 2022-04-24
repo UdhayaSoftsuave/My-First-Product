@@ -22,8 +22,11 @@ export class ProductListComponent implements OnInit {
     this.products = this.productService.getAllProducts();
   }
   
-  onclick(){
+  onclickAddProduct(){
     this.router.navigate(['add'] , {relativeTo: this.activeroutes , queryParamsHandling : 'preserve'});
+  }
+  onclickProductDetails(id : number){
+    this.router.navigate([id] , {relativeTo: this.activeroutes , queryParamsHandling : 'preserve'});
   }
 
 }
