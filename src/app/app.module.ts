@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ProductModel } from './common/productModel';
 import { HeaderComponent } from './header/header.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
@@ -22,12 +22,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     AddProductComponent,
     SelectProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRouter
   ],
   providers: [ProductService],
