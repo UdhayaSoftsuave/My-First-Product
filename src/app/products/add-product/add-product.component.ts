@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ProductModel } from 'src/app/common/productModel';
 import { ProductService } from '../products.services';
 
@@ -9,45 +10,23 @@ import { ProductService } from '../products.services';
 })
 export class AddProductComponent implements OnInit {
 
-  @ViewChild('productName', { static: true })
-  productName!: ElementRef;
-
-  @ViewChild('price', { static: true })
-  price!: ElementRef;
-
-  @ViewChild('description', { static: true })
-  description!: ElementRef;
-
-  @ViewChild('category', { static: true })
-  category!: ElementRef;
-
-  @ViewChild('image', { static: true })
-  image!: ElementRef;
-
-  product ! : ProductModel;
-  
-  products ! : ProductModel[];
+  product !: FormGroup;
 
   constructor(private productService :ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts();
+    this.product = new FormGroup({
+      "productName" : new FormControl(null),
+      "price" : new FormControl(null),
+      "descrption" : new FormControl(null),
+      "category" : new FormControl(null),
+      "imageUrl" : new FormControl(null)
+    })
   }
 
   onSubmit(){
-    this.product= new ProductModel(
-      this.productService.getindex() + 1, 
-      this.productName.nativeElement.value,
-      +this.price.nativeElement.value , 
-      this.description.nativeElement.value ,
-      this.category.nativeElement.value,
-      this.image.nativeElement.value),
-    this.productService.addProduct(this.product);
     console.log(this.product);
-    this.products.push(this.product);
-    this.productService.changedvalueEmit.emit(this.products);
-    
-    
+    this.productService.addProduct(this.product.value)
   }
 
 }

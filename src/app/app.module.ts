@@ -11,6 +11,7 @@ import { ProductService } from './products/products.services';
 import { SelectProductComponent } from './products/select-product/select-product.component';
 import { AppRouter } from './Router/app.component.router';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,6 +26,8 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRouter
   ],
   providers: [ProductService],

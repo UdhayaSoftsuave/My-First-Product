@@ -1,20 +1,21 @@
 
-    <form>
+
+<form [formGroup] = "product"  (ngSubmit) = "onSubmit()">
         <div class="form-group">
             <label for="productname">Product Name</label>
-            <input type="text" class="form-control" id="productname" placeholder="Enter productname" #productName>
+            <input type="text" formControlName = "productName" class="form-control" id="productname" placeholder="Enter productname">
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="price" #price>
+            <input type="number" formControlName = "price" class="form-control" id="price" placeholder="price" #price>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Description" #description>
+            <input type="text" formControlName = "descrption" class="form-control" id="description" placeholder="Description">
         </div>
         <div class="dropdown">
             <label for="cars">Choose a category </label>
-            <select id="cars" class="form-control" #category>
+            <select id="cars"formControlName = "category" class="form-control" >
                 <option value="watch">watch</option>
                 <option value="Mobiles">Mobiles</option>
                 <option value="shoes">shoes</option>
@@ -22,8 +23,8 @@
         </div>
         <div class="form-group">
             <label for="image">Image upload</label>
-            <input type="file" class="form-control" id="image" placeholder="upload Image" #image>
+            <input type="file" class="form-control" id="image" formControlName = "imageUrl" placeholder="upload Image" >
         </div>
             <br>
-        <button class="btn btn-primary" (click) = 'onSubmit()'>Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>    

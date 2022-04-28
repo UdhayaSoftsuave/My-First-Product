@@ -1,41 +1,35 @@
 import { EventEmitter, OnInit } from "@angular/core";
-import { of } from "rxjs";
+import { of, Subject } from "rxjs";
 import { ProductModel } from "../common/productModel";
 
 
 export class ProductService {
 
-    changedvalue !: ProductModel[];
-    changedvalueEmit = new EventEmitter<ProductModel[]>();
+    changedvalueEmit = new Subject<ProductModel[]>();
 
     products : ProductModel[] = [
         new ProductModel(1 , 'watch1' ,100 , 'good' ,'watch','https://www.helioswatchstore.com/sites/all/themes/helios/assets/images/inside-banner_3.jpg'),
         new ProductModel(2 , 'shoes1' ,100 , 'super' ,'shoes' , "https://www.helioswatchstore.com/sites/all/themes/helios/assets/images/inside-banner_3.jpg"),
     ];
     constructor(){
-        this.changedvalue = this.products;
+
     }
 
     getAllProducts(){
-        this.changedvalueEmit.subscribe(
-            (value : ProductModel[]) => {
-                return this.changedvalue = value;
-            }
-        )
-        return this.changedvalue;
+        return this.products.slice();
     }
 
     addProduct(productModel : ProductModel){
-        this.changedvalue.push(productModel);
-        
+        this.products.push(productModel);
+        this.changedvalueEmit.next(this.products);
     }
 
     getindex(){
-        return this.changedvalue.length;
+        return this.products.length;
     }
 
     getProductById(id:number){
-        return this.changedvalue[+id - 1];
+        return this.products[+id - 1];
     }
 
 }
