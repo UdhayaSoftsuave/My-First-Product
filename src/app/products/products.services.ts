@@ -29,15 +29,8 @@ export class ProductService implements OnInit{
         return this.products.length;
     }
 
-    getProductById(id:number){
-        console.log("http://localhost:9092/product/"+id);
-        
-        this.http.get<ProductModel>("http://localhost:9092/product/id" )
-        .subscribe(value => {
-            this.result = value;
-            console.log(value);
-        })
-        return this.result; 
+    getProductById(id:number){       
+        return this.http.get<ProductModel>("http://localhost:9092/product/"+ id);
     }
 
     addProduct(productModel : ProductModel){
