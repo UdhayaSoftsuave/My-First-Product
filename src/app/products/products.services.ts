@@ -30,7 +30,14 @@ export class ProductService implements OnInit{
     }
 
     getProductById(id:number){       
-        return this.http.get<ProductModel>("http://localhost:9092/product/"+ id);
+        let param = new HttpParams();
+        param = param.append('id' , 12);
+        param = param.append('name' , 'udhaya');
+        return this.http.get<ProductModel>("http://localhost:9092/product/"+  id,
+        {
+            headers : new HttpHeaders({'Aythorization': "true"}),
+            params : param
+        });
     }
 
     addProduct(productModel : ProductModel){
