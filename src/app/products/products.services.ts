@@ -36,7 +36,8 @@ export class ProductService implements OnInit{
         return this.http.get<ProductModel>("http://localhost:9092/product/"+  id,
         {
             headers : new HttpHeaders({'Aythorization': "true"}),
-            params : param
+            params : param,
+            responseType : "json"
         });
     }
 

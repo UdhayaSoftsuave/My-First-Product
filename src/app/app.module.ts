@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { SelectProductComponent } from './products/select-product/select-product
 import { AppRouter } from './Router/app.component.router';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppInterceptor } from './app.interceptor.service';
+import { LoggingInterceptor } from './app.Logging.interceptor';
 
 
 @NgModule({
@@ -31,7 +33,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRouter
   ],
-  providers: [ProductService],
+  providers: [ProductService , 
+    {provide : HTTP_INTERCEPTORS , useClass : LoggingInterceptor , multi : true},
+    {provide : HTTP_INTERCEPTORS , useClass : AppInterceptor , multi : true},
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
