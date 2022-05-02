@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInterceptor } from './app.interceptor.service';
 import { LoggingInterceptor } from './app.Logging.interceptor';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { LoggingInterceptor } from './app.Logging.interceptor';
     AddProductComponent,
     SelectProductComponent,
     ProductDetailsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
