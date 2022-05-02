@@ -13,6 +13,7 @@ const routes = [
         {path : "" , component : SelectProductComponent},
         {path : "add" , component : AddProductComponent},
         {path : ":id" , component : ProductDetailsComponent},
+        {path : ":id/edit" , component : AddProductComponent},
     ]}
     
 ];

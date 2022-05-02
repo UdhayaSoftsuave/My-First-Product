@@ -21,13 +21,6 @@ export class ProductService implements OnInit{
     ngOnInit(): void {
     }
 
-    getAllProducts(){
-        return this.products.slice();
-    }
-
-    getindex(){
-        return this.products.length;
-    }
 
     getProductById(id:number){       
         let param = new HttpParams();
@@ -46,26 +39,32 @@ export class ProductService implements OnInit{
             headers :new HttpHeaders({'custom' : "hello"})
         })
         .subscribe(value => {
-            this.products.push(value);
-            this.changedvalueEmit.next(this.products);
+            this.getProduct().subscribe(Allavlue => {
+                this.changedvalueEmit.next(Allavlue);
+            })   
         })
     }
 
     getProduct(){
-        this.http.get<ProductModel[]>("http://localhost:9092/product")
-        .subscribe(value => {
-            value.forEach(val => {
-                this.products.push(val);
-            })
-            this.changedvalueEmit.next(this.products);
-            // Object.entries(value).forEach(([key, val]) => {
-            //     console.log(val);
-            //     this.products.push(new ProductModel(val.id , val.productName , val.price,val.descrption,val.category,val.imageUrl));
-            // });      
-        })
-        console.log(this.products);
-        return this.products.slice();
-        
+        // let product: ProductModel[] = [];
+        return this.http.get<ProductModel[]>("http://localhost:9092/product")
+        // .subscribe(value => {
+        //         product = value;
+        //     this.changedvalueEmit.next(product);
+        //     // Object.entries(value).forEach(([key, val]) => {
+        //     //     console.log(val);
+        //     //     this.products.push(new ProductModel(val.id , val.productName , val.price,val.descrption,val.category,val.imageUrl));
+        //     // });      
+        // })
+        // // console.log(this.products);
+        // return product;   
+    }
+    updateProducts(value: ProductModel){
+        return this.http.put<ProductModel>("http://localhost:9092/product",value);
     }
 
+    deleteProducts(id : number){
+        return this.http.delete<void>("http://localhost:9092/product/" +id);
+        
+    }
 }

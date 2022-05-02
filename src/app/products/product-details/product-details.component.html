@@ -1,17 +1,24 @@
-<h2 style="text-align: center;">Product Details</h2>
-
+<div style="text-align: center;">
+<h2>Product Details</h2>
 <div class="row">
-    <img src="#" alt="">
+    <img [src]="product.imageUrl" width="400px" height="400px">
 </div>
 <div class="row col-md-12">
-    <p style="text-align: center;">{{product.productName}}</p>
+    <p>{{product.productName}}</p>
 </div>
 <div class="row col-md-12">
-    <p style="text-align: center;">${{product.price}}</p>
+    <p>${{product.price}}</p>
 </div>
 <div class="row col-md-12">
-    <p style="text-align: center;">{{product.descrption}}</p>
+    <p>{{product.descrption}}</p>
 </div>
 <div class="row col-md-12">
-    <p style="text-align: center;">{{product.category}}</p>
+    <p>{{product.category}}</p>
 </div>
+<div class="row col-md-12">
+    <button type="button" class="btn btn-primary" (click) = "onEditSelect()">Edit</button>
+    <button type="button" class="btn btn-danger" (click) = "onDeleteSelect()">Delete</button>
+</div>
+</div>
+
+
